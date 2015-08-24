@@ -1,0 +1,27 @@
+
+CC=gcc
+SUBDIRS=f1 f2 main obj
+
+OBJS=f1.o f2.o main.o
+BIN=myapp
+OBJS_DIR=obj
+BIN_DIR=bin
+
+export CC OBJS BIN OBJS_DIR BIN_DIR
+
+all:$(SUBDIRS)
+
+CHECK_DIR:
+	mkdir -p $(BIN_DIR)
+
+$(SUBDIRS):
+	@echo begin compile
+	#make -C $@
+
+ECHO:
+	@echo $(SUBDIRS)
+	@echo begin compile
+
+clean:
+	@$(RM) $(OBJS_DIR)/*.o
+	@$(RM) -rf $(BIN_DIR)
